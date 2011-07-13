@@ -1,7 +1,7 @@
 Install
 =========================
 
-To integrate QR Code Encoder static library with your iOS application, follow the steps below:
+= To integrate the QR Code Encoder static library with your iOS application, follow the steps below:
 
     (1) Drag the Xcode project package QRCodeEncoderObjectiveCAtGithub.xcodeproj to your project navigator
 
@@ -14,6 +14,9 @@ To integrate QR Code Encoder static library with your iOS application, follow th
 
 How to Use
 =========================
+
+= Typical workflow
+
     (1) Import QREncoder.h
    
     (2) Call QREncoder +encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString*)string 
