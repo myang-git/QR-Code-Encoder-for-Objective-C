@@ -24,4 +24,4 @@ How to Use
 
 Take a look at QRCodeEncoderDemoViewController.mm for encoding and rendering examples.
 
-Also, since the encoder references C++ code, the implementation files need to have .mm as the extension.
+Also, since the encoder references C++ code, ALL implementation files need to have .mm as the extension.
