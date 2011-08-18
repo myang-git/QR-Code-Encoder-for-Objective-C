@@ -6,4 +6,7 @@ Install
 
     * In the same Build Phases page, expand "Link Binary With Libraries", add libqrencoder.a to the list
 
+    * Switch to the Build Settings page, go down to the Search Paths section. (if you have trouble finding it, type "header search" in the search field)
+      Add the absolute path to the source code directory to the path list.
+
     * Build the project and you are good to go!
