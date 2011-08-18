@@ -9,8 +9,11 @@ To integrate the QR Code Encoder static library with your iOS application, follo
        Expand "Target Dependencies" and add qrencoder to the list
 
     3. In the same Build Phases page, expand "Link Binary With Libraries", add libqrencoder.a to the list
+    
+    4. Switch to the Build Settings page, go down to the Search Paths section. (if you have trouble finding it, type "header search" in the search field)
+       Add the absolute path to the source code directory to the path list.
 
-    4. Build the project and you are good to go!
+    5. Build the project and you are good to go!
 
 How to Use
 =========================
