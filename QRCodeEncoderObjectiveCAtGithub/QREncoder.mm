@@ -5,9 +5,52 @@
 
 @implementation QREncoder
 
-+ (DataMatrix*)encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString *)string {
-    const char* cstring = [string cStringUsingEncoding:NSUTF8StringEncoding];
++ (NSData*)AESEncryptString:(NSString*)string withPassphrase:(NSString*)passphrase {
+    if (passphrase.length>kCCKeySizeAES256) {
+        throw [NSException exceptionWithName:@"invalid passphrase exception" reason:[NSString stringWithFormat:@"passphrase too long: %d", passphrase.length] userInfo:nil];
+    }
+    const char* cstrPassphraseOriginal = [passphrase cStringUsingEncoding:NSUTF8StringEncoding];
+    char cstrPassphrasePadded[kCCKeySizeAES256 + 1];
+    memset(cstrPassphrasePadded, 0, sizeof(cstrPassphrasePadded));
+    memcpy(cstrPassphrasePadded, cstrPassphraseOriginal, [passphrase length]);
+    const char* dataIn = [string cStringUsingEncoding:NSUTF8StringEncoding];
+    size_t dataInLength = [string length];
+    size_t dataOutLength = dataInLength + kCCBlockSizeAES128;
+    void* dataOut = malloc(dataOutLength);
+    size_t encryptedDataLength = 0;
+    CCCryptorStatus status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding, cstrPassphrasePadded, kCCKeySizeAES256, NULL, dataIn, dataInLength, dataOut, dataOutLength, &encryptedDataLength);
+    NSData* encryptedData = nil;
+    if (status==kCCSuccess) {
+        encryptedData = [NSData dataWithBytes:dataOut length:encryptedDataLength];
+    }
+    free(dataOut);
+    return encryptedData;
+}
 
++ (NSString*)AESDecryptString:(NSData*)string withPassphrase:(NSString*)passphrase {
+    if (passphrase.length>kCCKeySizeAES256) {
+        throw [NSException exceptionWithName:@"invalid passphrase exception" reason:[NSString stringWithFormat:@"passphrase too long: %d", passphrase.length] userInfo:nil];
+    }
+    const char* cstrPassphraseOriginal = [passphrase cStringUsingEncoding:NSASCIIStringEncoding];
+    char cstrPassphrase[kCCKeySizeAES256 + 1];
+    memset(cstrPassphrase, 0, sizeof(cstrPassphrase));
+    memcpy(cstrPassphrase, cstrPassphraseOriginal, [passphrase length]);
+    const void* dataIn = [string bytes];
+    size_t dataInLength = [string length];
+    size_t dataOutLength = dataInLength + kCCBlockSizeAES128;
+    void* dataOut = malloc(dataOutLength);
+    size_t decryptedDataLength = 0;
+    CCCryptorStatus status = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding, cstrPassphrase, kCCKeySizeAES256, NULL, dataIn, dataInLength, dataOut, dataOutLength, &decryptedDataLength);
+    NSString* decryptedString = nil;
+    if (status==kCCSuccess) {
+        NSData* data = [NSData dataWithBytes:dataOut length:decryptedDataLength];
+        decryptedString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    }
+    free(dataOut);
+    return decryptedString;
+}
+
++ (DataMatrix*)encodeCStringWithECLevel:(int)ecLevel version:(int)version cstring:(const char*)cstring {
     CQR_Encode* encoder = new CQR_Encode;
     encoder->EncodeData(ecLevel, version, true, -1, cstring);
     int dimension = encoder->m_nSymbleSize;
@@ -22,6 +65,23 @@
     
     delete encoder;
     
+    return matrix;
+
+}
+
++ (DataMatrix*)encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString *)string AESPassphrase:(NSString*)AESPassphrase {
+    NSData* encryptedString = [QREncoder AESEncryptString:string withPassphrase:AESPassphrase];
+    const unsigned int len = [encryptedString length];
+    char cstring[len + 1];
+    bzero(cstring, len + 1);
+    [encryptedString getBytes:cstring length:len];
+    DataMatrix* matrix = [QREncoder encodeCStringWithECLevel:ecLevel version:version cstring:cstring];
+    return matrix;
+}
+
++ (DataMatrix*)encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString *)string {
+    const char* cstring = [string cStringUsingEncoding:NSUTF8StringEncoding];
+    DataMatrix* matrix = [QREncoder encodeCStringWithECLevel:ecLevel version:version cstring:cstring];
     return matrix;
 }
 

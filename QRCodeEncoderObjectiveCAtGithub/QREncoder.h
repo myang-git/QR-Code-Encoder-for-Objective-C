@@ -2,6 +2,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CommonCrypto/CommonCryptor.h>
 #include "QR_Encode.h"
 #import "DataMatrix.h"
 
@@ -21,6 +22,8 @@ const static unsigned char WHITE =  0xff;
 @interface QREncoder : NSObject {
     
 }
+
++ (DataMatrix*)encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString *)string AESPassphrase:(NSString*)AESPassphrase;
 
 + (DataMatrix*)encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString*)string;
 
