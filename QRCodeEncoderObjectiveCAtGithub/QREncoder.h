@@ -30,3 +30,5 @@ const static unsigned char WHITE =  0xff;
 + (UIImage*)renderDataMatrix:(DataMatrix*)matrix imageDimension:(int)imageDimension;
 
 @end
+
+void FLProviderReleaseData(void *info, const void *data, size_t size);
