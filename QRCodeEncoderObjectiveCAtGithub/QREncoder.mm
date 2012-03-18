@@ -132,7 +132,7 @@
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, 
                                                               rawData, 
                                                               rawDataSize, 
-                                                              NULL);
+                                                              FLProviderReleaseData);
     
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
     CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
@@ -156,5 +156,8 @@
     return newImage;
 }
 
+void FLProviderReleaseData(void *info, const void *data, size_t size) {
+    free((void *)data);
+}
 
 @end
