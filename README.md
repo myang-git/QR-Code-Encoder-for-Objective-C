@@ -29,6 +29,7 @@ Here is the typical workflow:
        to render the matrix generated from step 2.
 
 Take a look at QRCodeEncoderDemoViewController.mm for encoding and rendering examples.
+Or build and run the target QRCodeEncoderDemo to see things in action.
 
 Also, since the encoder references C++ code, ALL implementation files need to have .mm as the extension.
 
