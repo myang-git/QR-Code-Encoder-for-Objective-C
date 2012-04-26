@@ -1,5 +1,4 @@
 
-
 #import "QREncoder.h"
 
 
@@ -85,49 +84,51 @@
     return matrix;
 }
 
-+ (void)drawDotAt:(int)x y:(int)y offset:(int)offset intensity:(unsigned char)intensity pixelPerDot:(int)pixelPerDot imageDimension:(int)imageDimension rawData:(unsigned char*)rawData {
-    const int bytesPerPixel = 4;
-    const int bytesPerLine = bytesPerPixel * imageDimension;
-
-    int startX = pixelPerDot * x * bytesPerPixel + bytesPerPixel * offset;
-    int startY = pixelPerDot * y + offset;
-    int endX = startX + pixelPerDot * bytesPerPixel;
-    int endY = startY + pixelPerDot;
-    
-    for (int my = startY; my < endY; my++) {
-        for (int mx = startX; mx < endX; mx+=bytesPerPixel) {
-            rawData[bytesPerLine * my + mx    ] = intensity;    //red
-            rawData[bytesPerLine * my + mx + 1] = intensity;    //green
-            rawData[bytesPerLine * my + mx + 2] = intensity;    //blue
-            rawData[bytesPerLine * my + mx + 3] = 255;          //alpha
-        }
-    }
-    
-    
-}
-
 + (UIImage*)renderDataMatrix:(DataMatrix*)matrix imageDimension:(int)imageDimension {
     
     const int bitsPerPixel = BITS_PER_BYTE * BYTES_PER_PIXEL;
     const int bytesPerLine = BYTES_PER_PIXEL * imageDimension;
     const int rawDataSize = imageDimension * imageDimension * BYTES_PER_PIXEL;
     unsigned char* rawData = (unsigned char*)malloc(rawDataSize);
-
-    memset(rawData, WHITE, sizeof(unsigned char) * rawDataSize);
     
     int matrixDimension = [matrix dimension];
     int pixelPerDot = imageDimension / matrixDimension;
-    int offset = (int)((imageDimension - pixelPerDot * matrixDimension) / 2);
-
-    for (int y=0; y<matrixDimension; y+=1) {
-        for (int x=0; x<matrixDimension; x+=1) {
-            bool isDark = [matrix valueAt:x y:y];
-            if (isDark) {
-                char intensity = isDark ? 0 : WHITE;
-                [QREncoder drawDotAt:x y:y offset:offset intensity:intensity pixelPerDot:pixelPerDot imageDimension:imageDimension rawData:rawData];
-            }
+    int offsetTopAndLeft = (int)((imageDimension - pixelPerDot * matrixDimension) / 2);
+    int offsetBottomAndRight = (imageDimension - pixelPerDot * matrixDimension - offsetTopAndLeft);
+    
+    // alpha, blue, green, red
+    const uint32_t white = 0xFFFFFFFF, black = 0xFF000000, transp = 0x00FFFFFF;
+    
+    uint32_t *ptrData = (uint32_t *)rawData;
+    // top offset
+    for(int c=offsetTopAndLeft*imageDimension; c>0; c--)
+        *(ptrData++) = transp;
+    
+    for(int my=0; my<matrixDimension; my++) {
+        uint32_t *ptrDataSouce = ptrData; // start of the row we will copy
+        // left offset
+        for(int c=offsetTopAndLeft; c>0; c--) 
+            *(ptrData++) = transp;
+        
+        for(int mx=0; mx<matrixDimension; mx++) {
+            uint32_t clr = [matrix valueAt:mx y:my] ? black : white;
+            // draw one pixel line of data
+            for(int c=pixelPerDot; c>0; c--) 
+                *(ptrData++) = clr;
         }
+        
+        // right offset
+        for(int c=offsetBottomAndRight; c>0; c--) 
+            *(ptrData++) = transp;
+        
+        // then copy that row pixelPerDot-1 times
+        for(int c=(pixelPerDot-1)*imageDimension; c>0; c--) 
+            *(ptrData++) = *(ptrDataSouce++);
     }
+    
+    // bottom offset
+    for(int c=offsetBottomAndRight*imageDimension; c>0; c--) 
+        *(ptrData++) = transp;
     
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, 
                                                               rawData, 
@@ -135,7 +136,7 @@
                                                               FLProviderReleaseData);
     
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaLast;
     CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
     CGImageRef imageRef = CGImageCreate(imageDimension,
                                         imageDimension,
@@ -148,7 +149,7 @@
                                         NULL,NO,renderingIntent);
     
     UIImage *newImage = [UIImage imageWithCGImage:imageRef];
-
+    
     CGImageRelease(imageRef);
     CGColorSpaceRelease(colorSpaceRef);
     CGDataProviderRelease(provider);
