@@ -18,12 +18,12 @@
 		9633A02613CD1236000D8C1D /* QRCodeEncoderDemoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9633A02413CD1236000D8C1D /* QRCodeEncoderDemoViewController.h */; };
 		9633A02713CD1236000D8C1D /* QRCodeEncoderDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9633A02513CD1236000D8C1D /* QRCodeEncoderDemoViewController.mm */; };
 		9672D35B13BD662F0002B0E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9672D35A13BD662F0002B0E2 /* Foundation.framework */; };
-		9672D36B13BD665E0002B0E2 /* DataMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36413BD665E0002B0E2 /* DataMatrix.h */; };
+		9672D36B13BD665E0002B0E2 /* DataMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36413BD665E0002B0E2 /* DataMatrix.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9672D36C13BD665E0002B0E2 /* DataMatrix.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9672D36513BD665E0002B0E2 /* DataMatrix.mm */; };
 		9672D36D13BD665E0002B0E2 /* QR_Encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9672D36613BD665E0002B0E2 /* QR_Encode.cpp */; };
-		9672D36E13BD665E0002B0E2 /* QR_Encode.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36713BD665E0002B0E2 /* QR_Encode.h */; };
+		9672D36E13BD665E0002B0E2 /* QR_Encode.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36713BD665E0002B0E2 /* QR_Encode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9672D36F13BD665E0002B0E2 /* QREncoder-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36813BD665E0002B0E2 /* QREncoder-Prefix.pch */; };
-		9672D37013BD665E0002B0E2 /* QREncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36913BD665E0002B0E2 /* QREncoder.h */; };
+		9672D37013BD665E0002B0E2 /* QREncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36913BD665E0002B0E2 /* QREncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9672D37113BD665E0002B0E2 /* QREncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9672D36A13BD665E0002B0E2 /* QREncoder.mm */; };
 /* End PBXBuildFile section */
 
@@ -168,10 +168,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9672D37013BD665E0002B0E2 /* QREncoder.h in Headers */,
 				9672D36B13BD665E0002B0E2 /* DataMatrix.h in Headers */,
 				9672D36E13BD665E0002B0E2 /* QR_Encode.h in Headers */,
 				9672D36F13BD665E0002B0E2 /* QREncoder-Prefix.pch in Headers */,
-				9672D37013BD665E0002B0E2 /* QREncoder.h in Headers */,
 				9633A02613CD1236000D8C1D /* QRCodeEncoderDemoViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,8 +379,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QRCodeEncoderObjectiveCAtGithub/QRCodeEncoderObjectiveCAtGithub-Prefix.pch";
 				INSTALL_OWNER = "";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				VERSION_INFO_BUILDER = "";
 			};
 			name = Debug;
@@ -394,8 +397,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QRCodeEncoderObjectiveCAtGithub/QRCodeEncoderObjectiveCAtGithub-Prefix.pch";
 				INSTALL_OWNER = "";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				VERSION_INFO_BUILDER = "";
 			};
 			name = Release;
@@ -410,6 +416,7 @@
 				9621845B15431DBA00447877 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9672D35113BD662F0002B0E2 /* Build configuration list for PBXProject "QRCodeEncoderObjectiveCAtGithub" */ = {
 			isa = XCConfigurationList;
