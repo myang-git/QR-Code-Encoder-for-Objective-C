@@ -22,11 +22,9 @@ Here is the typical workflow:
 
     1. Import QREncoder.h
    
-    2. Call QREncoder +encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString*)string 
-       to encode a string to a square matrix of booleans.
+    2. Call +[QREncoder +encodeWithECLevel:version:string:] to encode a string to a square matrix of booleans.
    
-    3. Call QREncoder +renderDataMatrix:(DataMatrix*)matrix imageDimension:(int)imageDimension 
-       to render the matrix generated from step 2.
+    3. Call +[QREncoder +renderDataMatrix:imageDimension:] to render the matrix generated in step 2.
 
 Take a look at QRCodeEncoderDemoViewController.mm for encoding and rendering examples.
 Or build and run the target QRCodeEncoderDemo to see things in action.
