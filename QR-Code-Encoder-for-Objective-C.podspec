@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
     spec.source       = { :git => 'https://github.com/myang-git/QR-Code-Encoder-for-Objective-C.git',
         :commit => '80a5af09041673de6bdbd72fb93c9b95bf1b439e' }
     spec.source_files = 'QRCodeEncoderObjectiveCAtGithub/**/*.{h,m,mm}'
-    spec.requires_arc = true
+    spec.requires_arc = false
 end
 
 
