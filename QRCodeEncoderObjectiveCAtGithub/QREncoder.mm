@@ -6,7 +6,11 @@
 
 + (NSData*)AESEncryptString:(NSString*)string withPassphrase:(NSString*)passphrase {
     if (passphrase.length>kCCKeySizeAES256) {
+#ifdef __cplusplus
         throw [NSException exceptionWithName:@"invalid passphrase exception" reason:[NSString stringWithFormat:@"passphrase too long: %d", passphrase.length] userInfo:nil];
+#else
+        [NSException raise:@"invalid passphrase exception" format:@"passphrase too long: %d", passphrase.length];
+#endif
     }
     const char* cstrPassphraseOriginal = [passphrase cStringUsingEncoding:NSUTF8StringEncoding];
     char cstrPassphrasePadded[kCCKeySizeAES256 + 1];
@@ -32,7 +36,11 @@
 
 + (NSString*)AESDecryptString:(NSData*)string withPassphrase:(NSString*)passphrase {
     if (passphrase.length > kCCKeySizeAES256) {
+#ifdef __cplusplus
         throw [NSException exceptionWithName:@"invalid passphrase exception" reason:[NSString stringWithFormat:@"passphrase too long: %d", passphrase.length] userInfo:nil];
+#else
+        [NSException raise:@"invalid passphrase exception" format:@"passphrase too long: %d", passphrase.length];
+#endif
     }
     const char* cstrPassphraseOriginal = [passphrase cStringUsingEncoding:NSASCIIStringEncoding];
     char cstrPassphrase[kCCKeySizeAES256 + 1];
