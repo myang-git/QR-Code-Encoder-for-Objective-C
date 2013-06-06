@@ -910,24 +910,24 @@ BOOL CQR_Encode_EncodeDataSource(CQR_Encode_Struct *data, int nLevel, int nVersi
 // Returns: number (capacity over time = 0)
 
 static int CQR_Encode_GetEncodeVersion(CQR_Encode_Struct *data, int nVersion, LPCSTR lpsSource, int ncLength) {
-    int nVerGroup = (nVersion >= 27) ? QR_VRESION_L : ((nVersion >= 10) ? QR_VRESION_M : QR_VRESION_S);
+    int nVerGroup = (nVersion >= 27) ? QR_VERSION_L : ((nVersion >= 10) ? QR_VERSION_M : QR_VERSION_S);
     int i, j;
 
-    for (i = nVerGroup; i <= QR_VRESION_L; ++i) {
+    for (i = nVerGroup; i <= QR_VERSION_L; ++i) {
         if (CQR_Encode_EncodeSourceData(data, lpsSource, ncLength, i)) {
-            if (i == QR_VRESION_S) {
+            if (i == QR_VERSION_S) {
                 for (j = 1; j <= 9; ++j) {
                     if ((PRIVATE(m_ncDataCodeWordBit) + 7) / 8 <= QR_VersonInfo[j].ncDataCodeWord[data->m_nLevel]) {
                         return j;
                     }
                 }
-            } else if (i == QR_VRESION_M) {
+            } else if (i == QR_VERSION_M) {
                 for (j = 10; j <= 26; ++j) {
                     if ((PRIVATE(m_ncDataCodeWordBit) + 7) / 8 <= QR_VersonInfo[j].ncDataCodeWord[data->m_nLevel]) {
                         return j;
                     }
                 }
-            } else if (i == QR_VRESION_L) {
+            } else if (i == QR_VERSION_L) {
                 for (j = 27; j <= 40; ++j) {
                     if ((PRIVATE(m_ncDataCodeWordBit) + 7) / 8 <= QR_VersonInfo[j].ncDataCodeWord[data->m_nLevel]) {
                         return j;

@@ -64,9 +64,9 @@
 
 // バージョン(型番)グループ
 // Version (model number) group
-#define QR_VRESION_S	0 // 1 ～ 9
-#define QR_VRESION_M	1 // 10 ～ 26
-#define QR_VRESION_L	2 // 27 ～ 40
+#define QR_VERSION_S	0 // 1 ～ 9
+#define QR_VERSION_M	1 // 10 ～ 26
+#define QR_VERSION_L	2 // 27 ～ 40
 
 #define MAX_ALLCODEWORD	 3706 // 総コードワード数最大値
                               // Total number of codewords maximum value
