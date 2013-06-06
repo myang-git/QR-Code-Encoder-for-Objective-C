@@ -60,9 +60,9 @@
 + (DataMatrix*)encodeCStringWithECLevel:(int)ecLevel version:(int)version cstring:(const char*)cstring {
     BOOL result;
 #ifdef __cplusplus
-    CQR_Encode *encode = NULL;
+    CQR_Encode *encoder = NULL;
     try {
-        encode = new CQR_Encode();
+        encoder = new CQR_Encode();
     } catch (char const *message) {
         NSLog(@"encodeCStringWithECLevel: CQR_Encode new() failure %s", message);
         return nil;
