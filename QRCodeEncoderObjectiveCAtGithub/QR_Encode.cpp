@@ -1,8 +1,7 @@
 #include "QR_Encode.h"
 
-
-// Never return NULL
-inline CQR_Encode_Struct *CQR_Encode_Init_CPP() {
+// Always return something
+static inline CQR_Encode_Struct *CQR_Encode_Init_CPP() {
     CQR_Encode_Struct *result = CQR_Encode_Init();
     if (NULL == result) {
         throw "CQR_Encode_Init malloc failed.  Probable low memory condition.";

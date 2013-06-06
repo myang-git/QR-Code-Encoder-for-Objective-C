@@ -31,7 +31,9 @@ Here is the typical workflow:
 Take a look at QRCodeEncoderDemoViewController.mm for encoding and rendering examples.
 Or build and run the target QRCodeEncoderDemo to see things in action.
 
-Also, since the encoder references C++ code, ALL implementation files need to have .mm as the extension.
+No longer true, Objective-C and Objective-C++ are both supported
+----------------------------------------------------------------
+Also, since the encoder references C++ code, ALL implementation files in a project need to have .mm as the extension.
 
 License
 =========================

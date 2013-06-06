@@ -15,8 +15,6 @@
 		9621845315431DBA00447877 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9621845215431DBA00447877 /* AppDelegate.mm */; };
 		9621845915431DBA00447877 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9621845715431DBA00447877 /* ViewController.xib */; };
 		9621845E15431F2800447877 /* libqrencoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9672D35713BD662F0002B0E2 /* libqrencoder.a */; };
-		9633A02613CD1236000D8C1D /* QRCodeEncoderDemoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9633A02413CD1236000D8C1D /* QRCodeEncoderDemoViewController.h */; };
-		9633A02713CD1236000D8C1D /* QRCodeEncoderDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9633A02513CD1236000D8C1D /* QRCodeEncoderDemoViewController.mm */; };
 		9672D35B13BD662F0002B0E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9672D35A13BD662F0002B0E2 /* Foundation.framework */; };
 		9672D36B13BD665E0002B0E2 /* DataMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36413BD665E0002B0E2 /* DataMatrix.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9672D36C13BD665E0002B0E2 /* DataMatrix.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9672D36513BD665E0002B0E2 /* DataMatrix.mm */; };
@@ -25,6 +23,8 @@
 		9672D36F13BD665E0002B0E2 /* QREncoder-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36813BD665E0002B0E2 /* QREncoder-Prefix.pch */; };
 		9672D37013BD665E0002B0E2 /* QREncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36913BD665E0002B0E2 /* QREncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9672D37113BD665E0002B0E2 /* QREncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9672D36A13BD665E0002B0E2 /* QREncoder.mm */; };
+		BA798313F4E3F133E55601A3 /* QRCodeEncoderDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA798DC2FBEDAA5AD45A414E /* QRCodeEncoderDemoViewController.mm */; };
+		BA7984CF1043BDE62FC71866 /* QRCodeEncoderDemoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798FF97165E01902D180BF /* QRCodeEncoderDemoViewController.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +48,6 @@
 		9621845115431DBA00447877 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9621845215431DBA00447877 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		9621845815431DBA00447877 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		9633A02413CD1236000D8C1D /* QRCodeEncoderDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeEncoderDemoViewController.h; sourceTree = "<group>"; };
-		9633A02513CD1236000D8C1D /* QRCodeEncoderDemoViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QRCodeEncoderDemoViewController.mm; sourceTree = "<group>"; };
 		9672D35713BD662F0002B0E2 /* libqrencoder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libqrencoder.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9672D35A13BD662F0002B0E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9672D35E13BD662F0002B0E2 /* QRCodeEncoderObjectiveCAtGithub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QRCodeEncoderObjectiveCAtGithub-Prefix.pch"; sourceTree = "<group>"; };
@@ -60,6 +58,8 @@
 		9672D36813BD665E0002B0E2 /* QREncoder-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QREncoder-Prefix.pch"; sourceTree = "<group>"; };
 		9672D36913BD665E0002B0E2 /* QREncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QREncoder.h; sourceTree = "<group>"; };
 		9672D36A13BD665E0002B0E2 /* QREncoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QREncoder.mm; sourceTree = "<group>"; };
+		BA798DC2FBEDAA5AD45A414E /* QRCodeEncoderDemoViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QRCodeEncoderDemoViewController.mm; sourceTree = "<group>"; };
+		BA798FF97165E01902D180BF /* QRCodeEncoderDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeEncoderDemoViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +92,8 @@
 				9621845215431DBA00447877 /* AppDelegate.mm */,
 				9621845715431DBA00447877 /* ViewController.xib */,
 				9621844915431DBA00447877 /* Supporting Files */,
+				BA798DC2FBEDAA5AD45A414E /* QRCodeEncoderDemoViewController.mm */,
+				BA798FF97165E01902D180BF /* QRCodeEncoderDemoViewController.h */,
 			);
 			path = QRCodeEncoderDemo;
 			sourceTree = "<group>";
@@ -139,8 +141,6 @@
 		9672D35C13BD662F0002B0E2 /* QRCodeEncoderObjectiveCAtGithub */ = {
 			isa = PBXGroup;
 			children = (
-				9633A02413CD1236000D8C1D /* QRCodeEncoderDemoViewController.h */,
-				9633A02513CD1236000D8C1D /* QRCodeEncoderDemoViewController.mm */,
 				9672D36413BD665E0002B0E2 /* DataMatrix.h */,
 				9672D36513BD665E0002B0E2 /* DataMatrix.mm */,
 				9672D36613BD665E0002B0E2 /* QR_Encode.cpp */,
@@ -172,7 +172,7 @@
 				9672D36B13BD665E0002B0E2 /* DataMatrix.h in Headers */,
 				9672D36E13BD665E0002B0E2 /* QR_Encode.h in Headers */,
 				9672D36F13BD665E0002B0E2 /* QREncoder-Prefix.pch in Headers */,
-				9633A02613CD1236000D8C1D /* QRCodeEncoderDemoViewController.h in Headers */,
+				BA7984CF1043BDE62FC71866 /* QRCodeEncoderDemoViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +269,7 @@
 				9672D36C13BD665E0002B0E2 /* DataMatrix.mm in Sources */,
 				9672D36D13BD665E0002B0E2 /* QR_Encode.cpp in Sources */,
 				9672D37113BD665E0002B0E2 /* QREncoder.mm in Sources */,
-				9633A02713CD1236000D8C1D /* QRCodeEncoderDemoViewController.mm in Sources */,
+				BA798313F4E3F133E55601A3 /* QRCodeEncoderDemoViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
