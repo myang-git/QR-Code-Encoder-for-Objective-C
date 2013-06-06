@@ -1323,7 +1323,7 @@ static BOOL CQR_Encode_EncodeSourceData(CQR_Encode_Struct *data, LPCSTR lpsSourc
         } else /* PRIVATE(m_byBlockMode)[i] == QR_MODE_KANJI */ {
             /////////////////////////////////////////////////////////////////
             // 漢字モード
-            // Chinese character mode
+            // Kanji character mode
 
             // モードインジケータ(1000b)
             // Mode indicator (1000b)
