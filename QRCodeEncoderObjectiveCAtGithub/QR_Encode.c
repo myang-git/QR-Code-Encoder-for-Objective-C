@@ -6,8 +6,8 @@
 
 // forward declarations
 static  int CQR_Encode_GetEncodeVersion     (CQR_Encode_Struct *data, int nVersion, LPCSTR lpsSource, int ncLength);
-static BYTE CQR_Encode_AlphabetToBinaly     (unsigned char c);
-static WORD CQR_Encode_LengthKanjiToBinaly  (WORD wc);
+static BYTE CQR_Encode_AlphabetToBinary     (unsigned char c);
+static WORD CQR_Encode_LengthKanjiToBinary  (WORD wc);
 static BOOL CQR_Encode_EncodeSourceData     (CQR_Encode_Struct *data, LPCSTR lpsSource, int ncLength, int nVerGroup);
 static  int CQR_Encode_CountPenalty         (CQR_Encode_Struct *data);
 static  int CQR_Encode_GetBitLength         (BYTE nMode, int ncData, int nVerGroup);
@@ -1286,14 +1286,14 @@ static BOOL CQR_Encode_EncodeSourceData(CQR_Encode_Struct *data, LPCSTR lpsSourc
             // Bit preservation
             for (j = 0; j < PRIVATE(m_nBlockLength)[i]; j += 2) {
                 if (j < PRIVATE(m_nBlockLength)[i] - 1) {
-                    wBinCode = (WORD)((CQR_Encode_AlphabetToBinaly(lpsSource[ncComplete + j]) * 45) +
-                                       CQR_Encode_AlphabetToBinaly(lpsSource[ncComplete + j + 1]));
+                    wBinCode = (WORD)((CQR_Encode_AlphabetToBinary(lpsSource[ncComplete + j]) * 45) +
+                                       CQR_Encode_AlphabetToBinary(lpsSource[ncComplete + j + 1]));
 
                     PRIVATE(m_ncDataCodeWordBit) = CQR_Encode_SetBitStream(data, PRIVATE(m_ncDataCodeWordBit), wBinCode, 11);
                 } else {
                     // 端数１バイト
                     // 1 byte fraction
-                    wBinCode = (WORD)CQR_Encode_AlphabetToBinaly(lpsSource[ncComplete + j]);
+                    wBinCode = (WORD)CQR_Encode_AlphabetToBinary(lpsSource[ncComplete + j]);
 
                     PRIVATE(m_ncDataCodeWordBit) = CQR_Encode_SetBitStream(data, PRIVATE(m_ncDataCodeWordBit), wBinCode, 6);
                 }
@@ -1336,7 +1336,7 @@ static BOOL CQR_Encode_EncodeSourceData(CQR_Encode_Struct *data, LPCSTR lpsSourc
             // 漢字モードでビット列保存
             // Bit string stored in character mode
             for (j = 0; j < PRIVATE(m_nBlockLength)[i] / 2; ++j) {
-                WORD wBinCode = CQR_Encode_LengthKanjiToBinaly((WORD)(((BYTE)lpsSource[ncComplete + (j * 2)] << 8) + (BYTE)lpsSource[ncComplete + (j * 2) + 1]));
+                WORD wBinCode = CQR_Encode_LengthKanjiToBinary((WORD)(((BYTE)lpsSource[ncComplete + (j * 2)] << 8) + (BYTE)lpsSource[ncComplete + (j * 2) + 1]));
 
                 PRIVATE(m_ncDataCodeWordBit) = CQR_Encode_SetBitStream(data, PRIVATE(m_ncDataCodeWordBit), wBinCode, 13);
             }
@@ -1426,7 +1426,7 @@ static int CQR_Encode_SetBitStream(CQR_Encode_Struct *data, int nIndex, WORD wDa
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CQR_Encode::AlphabetToBinaly
+// CQR_Encode::AlphabetToBinary
 // 用  途：英数字モード文字のバイナリ化
 // 引  数：対象文字
 // 戻り値：バイナリ値
@@ -1434,7 +1434,7 @@ static int CQR_Encode_SetBitStream(CQR_Encode_Struct *data, int nIndex, WORD wDa
 // Arguments: target character
 // Returns: binary value
 
-BYTE CQR_Encode_AlphabetToBinaly(unsigned char c)
+BYTE CQR_Encode_AlphabetToBinary(unsigned char c)
 {
     if      (c >= '0' && c <= '9') { return (unsigned char)(c - '0'); }
     else if (c >= 'A' && c <= 'Z') { return (unsigned char)(c - 'A' + 10); }
@@ -1452,7 +1452,7 @@ BYTE CQR_Encode_AlphabetToBinaly(unsigned char c)
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CQR_Encode::KanjiToBinaly
+// CQR_Encode::KanjiToBinary
 // 用  途：漢字モード文字のバイナリ化
 // 引  数：対象文字
 // 戻り値：バイナリ値
@@ -1460,7 +1460,7 @@ BYTE CQR_Encode_AlphabetToBinaly(unsigned char c)
 // Arguments: target character
 // Returns: binary value
 
-WORD CQR_Encode_LengthKanjiToBinaly(WORD wc)
+WORD CQR_Encode_LengthKanjiToBinary(WORD wc)
 {
     if (wc >= 0x8140 && wc <= 0x9ffc) {
         wc -= 0x8140;
