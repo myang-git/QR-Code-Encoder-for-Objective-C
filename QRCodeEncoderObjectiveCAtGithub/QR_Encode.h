@@ -192,7 +192,7 @@ protected:
     CQR_Encode_Struct *data;
 };
 
-class CQR_Encode : CQR_Encode_Proxy {
+class CQR_Encode : public CQR_Encode_Proxy {
 public:
      CQR_Encode();
     ~CQR_Encode();
