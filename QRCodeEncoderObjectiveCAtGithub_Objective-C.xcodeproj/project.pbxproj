@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4CAF01831760A56A00EAA4B0 /* QR_Encode.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF01811760A56A00EAA4B0 /* QR_Encode.c */; };
+		4CAF01A41760A89200EAA4B0 /* AppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAF01991760A89200EAA4B0 /* AppDelegate.h */; };
+		4CAF01A61760A89200EAA4B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF019F1760A89200EAA4B0 /* main.m */; };
+		4CAF01A71760A89200EAA4B0 /* QRCodeEncoderDemo-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 4CAF01A11760A89200EAA4B0 /* QRCodeEncoderDemo-Prefix.pch */; };
+		4CAF01A81760A89200EAA4B0 /* QRCodeEncoderDemoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAF01A21760A89200EAA4B0 /* QRCodeEncoderDemoViewController.h */; };
+		4CAF01AC1760A8E800EAA4B0 /* QREncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF01AB1760A8E800EAA4B0 /* QREncoder.m */; };
+		4CAF01AE1760A8FB00EAA4B0 /* DataMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF01AD1760A8FB00EAA4B0 /* DataMatrix.m */; };
+		4CAF01AF1760AB1400EAA4B0 /* QRCodeEncoderDemo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CAF01A01760A89200EAA4B0 /* QRCodeEncoderDemo-Info.plist */; };
+		4CAF01B01760AB1D00EAA4B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF019F1760A89200EAA4B0 /* main.m */; };
+		4CAF01B11760AB2400EAA4B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF019A1760A89200EAA4B0 /* AppDelegate.m */; };
+		4CAF01B21760AB2900EAA4B0 /* QRCodeEncoderDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF01A31760A89200EAA4B0 /* QRCodeEncoderDemoViewController.m */; };
+		9621844415431DBA00447877 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9621844315431DBA00447877 /* UIKit.framework */; };
+		9621844515431DBA00447877 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9672D35A13BD662F0002B0E2 /* Foundation.framework */; };
+		9621844715431DBA00447877 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9621844615431DBA00447877 /* CoreGraphics.framework */; };
+		9621845E15431F2800447877 /* libqrencoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9672D35713BD662F0002B0E2 /* libqrencoder.a */; };
+		9672D35B13BD662F0002B0E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9672D35A13BD662F0002B0E2 /* Foundation.framework */; };
+		9672D36B13BD665E0002B0E2 /* DataMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36413BD665E0002B0E2 /* DataMatrix.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9672D36E13BD665E0002B0E2 /* QR_Encode.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36713BD665E0002B0E2 /* QR_Encode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9672D36F13BD665E0002B0E2 /* QREncoder-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36813BD665E0002B0E2 /* QREncoder-Prefix.pch */; };
+		9672D37013BD665E0002B0E2 /* QREncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9672D36913BD665E0002B0E2 /* QREncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9621845F15431F2E00447877 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9672D34E13BD662F0002B0E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9672D35613BD662F0002B0E2;
+			remoteInfo = qrencoder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4CAF01811760A56A00EAA4B0 /* QR_Encode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = QR_Encode.c; sourceTree = "<group>"; };
+		4CAF01991760A89200EAA4B0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4CAF019A1760A89200EAA4B0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4CAF019E1760A89200EAA4B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		4CAF019F1760A89200EAA4B0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4CAF01A01760A89200EAA4B0 /* QRCodeEncoderDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "QRCodeEncoderDemo-Info.plist"; sourceTree = "<group>"; };
+		4CAF01A11760A89200EAA4B0 /* QRCodeEncoderDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QRCodeEncoderDemo-Prefix.pch"; sourceTree = "<group>"; };
+		4CAF01A21760A89200EAA4B0 /* QRCodeEncoderDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeEncoderDemoViewController.h; sourceTree = "<group>"; };
+		4CAF01A31760A89200EAA4B0 /* QRCodeEncoderDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeEncoderDemoViewController.m; sourceTree = "<group>"; };
+		4CAF01AB1760A8E800EAA4B0 /* QREncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QREncoder.m; sourceTree = "<group>"; };
+		4CAF01AD1760A8FB00EAA4B0 /* DataMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataMatrix.m; sourceTree = "<group>"; };
+		9621844115431DBA00447877 /* QRCodeEncoderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeEncoderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9621844315431DBA00447877 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9621844615431DBA00447877 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9672D35713BD662F0002B0E2 /* libqrencoder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libqrencoder.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9672D35A13BD662F0002B0E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9672D35E13BD662F0002B0E2 /* QRCodeEncoderObjectiveCAtGithub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QRCodeEncoderObjectiveCAtGithub-Prefix.pch"; sourceTree = "<group>"; };
+		9672D36413BD665E0002B0E2 /* DataMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataMatrix.h; sourceTree = "<group>"; };
+		9672D36713BD665E0002B0E2 /* QR_Encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QR_Encode.h; sourceTree = "<group>"; };
+		9672D36813BD665E0002B0E2 /* QREncoder-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QREncoder-Prefix.pch"; sourceTree = "<group>"; };
+		9672D36913BD665E0002B0E2 /* QREncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QREncoder.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9621843E15431DBA00447877 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9621845E15431F2800447877 /* libqrencoder.a in Frameworks */,
+				9621844415431DBA00447877 /* UIKit.framework in Frameworks */,
+				9621844515431DBA00447877 /* Foundation.framework in Frameworks */,
+				9621844715431DBA00447877 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9672D35413BD662F0002B0E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9672D35B13BD662F0002B0E2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4CAF01981760A89200EAA4B0 /* QRCodeEncoderDemo_Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				4CAF01991760A89200EAA4B0 /* AppDelegate.h */,
+				4CAF019A1760A89200EAA4B0 /* AppDelegate.m */,
+				4CAF019D1760A89200EAA4B0 /* ViewController.xib */,
+				4CAF01AA1760A8A500EAA4B0 /* Supporting Files */,
+				4CAF01A21760A89200EAA4B0 /* QRCodeEncoderDemoViewController.h */,
+				4CAF01A31760A89200EAA4B0 /* QRCodeEncoderDemoViewController.m */,
+			);
+			path = "QRCodeEncoderDemo_Objective-C";
+			sourceTree = "<group>";
+		};
+		4CAF01AA1760A8A500EAA4B0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CAF019F1760A89200EAA4B0 /* main.m */,
+				4CAF01A01760A89200EAA4B0 /* QRCodeEncoderDemo-Info.plist */,
+				4CAF01A11760A89200EAA4B0 /* QRCodeEncoderDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9672D34C13BD662F0002B0E2 = {
+			isa = PBXGroup;
+			children = (
+				4CAF01981760A89200EAA4B0 /* QRCodeEncoderDemo_Objective-C */,
+				9672D35C13BD662F0002B0E2 /* QRCodeEncoderObjectiveCAtGithub */,
+				9672D35913BD662F0002B0E2 /* Frameworks */,
+				9672D35813BD662F0002B0E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9672D35813BD662F0002B0E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9672D35713BD662F0002B0E2 /* libqrencoder.a */,
+				9621844115431DBA00447877 /* QRCodeEncoderDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9672D35913BD662F0002B0E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9672D35A13BD662F0002B0E2 /* Foundation.framework */,
+				9621844315431DBA00447877 /* UIKit.framework */,
+				9621844615431DBA00447877 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9672D35C13BD662F0002B0E2 /* QRCodeEncoderObjectiveCAtGithub */ = {
+			isa = PBXGroup;
+			children = (
+				9672D36413BD665E0002B0E2 /* DataMatrix.h */,
+				4CAF01AD1760A8FB00EAA4B0 /* DataMatrix.m */,
+				9672D36713BD665E0002B0E2 /* QR_Encode.h */,
+				4CAF01811760A56A00EAA4B0 /* QR_Encode.c */,
+				9672D36813BD665E0002B0E2 /* QREncoder-Prefix.pch */,
+				9672D36913BD665E0002B0E2 /* QREncoder.h */,
+				4CAF01AB1760A8E800EAA4B0 /* QREncoder.m */,
+				9672D35D13BD662F0002B0E2 /* Supporting Files */,
+			);
+			path = QRCodeEncoderObjectiveCAtGithub;
+			sourceTree = "<group>";
+		};
+		9672D35D13BD662F0002B0E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9672D35E13BD662F0002B0E2 /* QRCodeEncoderObjectiveCAtGithub-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9672D35513BD662F0002B0E2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9672D37013BD665E0002B0E2 /* QREncoder.h in Headers */,
+				9672D36B13BD665E0002B0E2 /* DataMatrix.h in Headers */,
+				9672D36E13BD665E0002B0E2 /* QR_Encode.h in Headers */,
+				9672D36F13BD665E0002B0E2 /* QREncoder-Prefix.pch in Headers */,
+				4CAF01A41760A89200EAA4B0 /* AppDelegate.h in Headers */,
+				4CAF01A71760A89200EAA4B0 /* QRCodeEncoderDemo-Prefix.pch in Headers */,
+				4CAF01A81760A89200EAA4B0 /* QRCodeEncoderDemoViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9621844015431DBA00447877 /* QRCodeEncoderDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9621845C15431DBA00447877 /* Build configuration list for PBXNativeTarget "QRCodeEncoderDemo" */;
+			buildPhases = (
+				9621843D15431DBA00447877 /* Sources */,
+				9621843E15431DBA00447877 /* Frameworks */,
+				9621843F15431DBA00447877 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9621846015431F2E00447877 /* PBXTargetDependency */,
+			);
+			name = QRCodeEncoderDemo;
+			productName = QRCodeEncoderDemo;
+			productReference = 9621844115431DBA00447877 /* QRCodeEncoderDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9672D35613BD662F0002B0E2 /* qrencoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9672D36113BD662F0002B0E2 /* Build configuration list for PBXNativeTarget "qrencoder" */;
+			buildPhases = (
+				9672D35313BD662F0002B0E2 /* Sources */,
+				9672D35413BD662F0002B0E2 /* Frameworks */,
+				9672D35513BD662F0002B0E2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = qrencoder;
+			productName = QRCodeEncoderObjectiveCAtGithub;
+			productReference = 9672D35713BD662F0002B0E2 /* libqrencoder.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9672D34E13BD662F0002B0E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = 9672D35113BD662F0002B0E2 /* Build configuration list for PBXProject "QRCodeEncoderObjectiveCAtGithub_Objective-C" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9672D34C13BD662F0002B0E2;
+			productRefGroup = 9672D35813BD662F0002B0E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9672D35613BD662F0002B0E2 /* qrencoder */,
+				9621844015431DBA00447877 /* QRCodeEncoderDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9621843F15431DBA00447877 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CAF01AF1760AB1400EAA4B0 /* QRCodeEncoderDemo-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9621843D15431DBA00447877 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CAF01B01760AB1D00EAA4B0 /* main.m in Sources */,
+				4CAF01B11760AB2400EAA4B0 /* AppDelegate.m in Sources */,
+				4CAF01B21760AB2900EAA4B0 /* QRCodeEncoderDemoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9672D35313BD662F0002B0E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CAF01831760A56A00EAA4B0 /* QR_Encode.c in Sources */,
+				4CAF01A61760A89200EAA4B0 /* main.m in Sources */,
+				4CAF01AC1760A8E800EAA4B0 /* QREncoder.m in Sources */,
+				4CAF01AE1760A8FB00EAA4B0 /* DataMatrix.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9621846015431F2E00447877 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9672D35613BD662F0002B0E2 /* qrencoder */;
+			targetProxy = 9621845F15431F2E00447877 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4CAF019D1760A89200EAA4B0 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CAF019E1760A89200EAA4B0 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9621845A15431DBA00447877 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QRCodeEncoderDemo/QRCodeEncoderDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "QRCodeEncoderDemo/QRCodeEncoderDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9621845B15431DBA00447877 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QRCodeEncoderDemo/QRCodeEncoderDemo-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "QRCodeEncoderDemo/QRCodeEncoderDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9672D35F13BD662F0002B0E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9672D36013BD662F0002B0E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		9672D36213BD662F0002B0E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALTERNATE_OWNER = "";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/QRCodeEncoderObjectiveCAtGithub.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QRCodeEncoderObjectiveCAtGithub/QRCodeEncoderObjectiveCAtGithub-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_OWNER = "";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s";
+				VERSION_INFO_BUILDER = "";
+			};
+			name = Debug;
+		};
+		9672D36313BD662F0002B0E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALTERNATE_OWNER = "";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/QRCodeEncoderObjectiveCAtGithub.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QRCodeEncoderObjectiveCAtGithub/QRCodeEncoderObjectiveCAtGithub-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_OWNER = "";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSION_INFO_BUILDER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9621845C15431DBA00447877 /* Build configuration list for PBXNativeTarget "QRCodeEncoderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9621845A15431DBA00447877 /* Debug */,
+				9621845B15431DBA00447877 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9672D35113BD662F0002B0E2 /* Build configuration list for PBXProject "QRCodeEncoderObjectiveCAtGithub_Objective-C" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9672D35F13BD662F0002B0E2 /* Debug */,
+				9672D36013BD662F0002B0E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9672D36113BD662F0002B0E2 /* Build configuration list for PBXNativeTarget "qrencoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9672D36213BD662F0002B0E2 /* Debug */,
+				9672D36313BD662F0002B0E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9672D34E13BD662F0002B0E2 /* Project object */;
+}
