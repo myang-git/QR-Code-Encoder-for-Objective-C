@@ -16,10 +16,14 @@
     size_t dataInLength = [string length];
     size_t dataOutLength = dataInLength + kCCBlockSizeAES128;
     void* dataOut = malloc(dataOutLength);
+    if (NULL == dataOut) {
+        NSLog(@"AESEncryptString: malloc failure");
+        return nil;
+    }
     size_t encryptedDataLength = 0;
     CCCryptorStatus status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding, cstrPassphrasePadded, kCCKeySizeAES256, NULL, dataIn, dataInLength, dataOut, dataOutLength, &encryptedDataLength);
     NSData* encryptedData = nil;
-    if (status==kCCSuccess) {
+    if (status == kCCSuccess) {
         encryptedData = [NSData dataWithBytes:dataOut length:encryptedDataLength];
     }
     free(dataOut);
@@ -27,7 +31,7 @@
 }
 
 + (NSString*)AESDecryptString:(NSData*)string withPassphrase:(NSString*)passphrase {
-    if (passphrase.length>kCCKeySizeAES256) {
+    if (passphrase.length > kCCKeySizeAES256) {
         throw [NSException exceptionWithName:@"invalid passphrase exception" reason:[NSString stringWithFormat:@"passphrase too long: %d", passphrase.length] userInfo:nil];
     }
     const char* cstrPassphraseOriginal = [passphrase cStringUsingEncoding:NSASCIIStringEncoding];
@@ -38,10 +42,14 @@
     size_t dataInLength = [string length];
     size_t dataOutLength = dataInLength + kCCBlockSizeAES128;
     void* dataOut = malloc(dataOutLength);
+    if (NULL == dataOut) {
+        NSLog(@"AESDecryptString: Malloc failure");
+        return nil;
+    }
     size_t decryptedDataLength = 0;
     CCCryptorStatus status = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding, cstrPassphrase, kCCKeySizeAES256, NULL, dataIn, dataInLength, dataOut, dataOutLength, &decryptedDataLength);
     NSString* decryptedString = nil;
-    if (status==kCCSuccess) {
+    if (status == kCCSuccess) {
         NSData* data = [NSData dataWithBytes:dataOut length:decryptedDataLength];
         decryptedString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     }
@@ -50,8 +58,28 @@
 }
 
 + (DataMatrix*)encodeCStringWithECLevel:(int)ecLevel version:(int)version cstring:(const char*)cstring {
-    CQR_Encode* encoder = new CQR_Encode;
-    encoder->EncodeData(ecLevel, version, true, -1, cstring);
+    BOOL result;
+#ifdef __cplusplus
+    CQR_Encode *encode = NULL;
+    try {
+        encode = new CQR_Encode();
+    } catch (char const *message) {
+        NSLog(@"encodeCStringWithECLevel: CQR_Encode new() failure %s", message);
+        return nil;
+    }
+    result = encoder->EncodeData(ecLevel, version, YES, -1, cstring);
+#else
+    CQR_Encode_Struct* encoder = CQR_Encode_Init();
+    if (! encoder) {
+        NSLog(@"encodeCStringWithECLevel: CQR_Encode_Init malloc failure");
+        return nil;
+    }
+    result = CQR_Encode_EncodeData(encoder, ecLevel, version, YES, -1, cstring);
+#endif
+    if (! result) {
+        NSLog(@"encodeCStringWithECLevel: CQR_Encode_EncodeData failed, probably bad parameters");
+        return nil;
+    }
     int dimension = encoder->m_nSymbleSize;
     DataMatrix* matrix = [[[DataMatrix alloc] initWith:dimension] autorelease];
     for (int y=0; y<dimension; y++) {
@@ -61,26 +89,37 @@
             [matrix set:bk x:y y:x];
         }
     }
-    
-    delete encoder;
-    
-    return matrix;
 
+#ifdef __cplusplus
+    delete encoder;
+#else
+    CQR_Encode_Free(encoder);
+#endif
+    return matrix;
 }
 
-+ (DataMatrix*)encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString *)string AESPassphrase:(NSString*)AESPassphrase {
++ (DataMatrix*)encodeWithECLevel:(int)ecLevel
+                         version:(int)version
+                          string:(NSString *)string
+                   AESPassphrase:(NSString*)AESPassphrase {
     NSData* encryptedString = [QREncoder AESEncryptString:string withPassphrase:AESPassphrase];
     const unsigned int len = [encryptedString length];
     char cstring[len + 1];
-    bzero(cstring, len + 1);
+    memset(cstring, 0, len + 1);
     [encryptedString getBytes:cstring length:len];
-    DataMatrix* matrix = [QREncoder encodeCStringWithECLevel:ecLevel version:version cstring:cstring];
+    DataMatrix* matrix = [QREncoder encodeCStringWithECLevel:ecLevel
+                                                     version:version
+                                                     cstring:cstring];
     return matrix;
 }
 
-+ (DataMatrix*)encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString *)string {
++ (DataMatrix*)encodeWithECLevel:(int)ecLevel
+                         version:(int)version
+                          string:(NSString *)string {
     const char* cstring = [string cStringUsingEncoding:NSUTF8StringEncoding];
-    DataMatrix* matrix = [QREncoder encodeCStringWithECLevel:ecLevel version:version cstring:cstring];
+    DataMatrix* matrix = [QREncoder encodeCStringWithECLevel:ecLevel
+                                                     version:version
+                                                     cstring:cstring];
     return matrix;
 }
 
@@ -101,33 +140,33 @@
     
     uint32_t *ptrData = (uint32_t *)rawData;
     // top offset
-    for(int c=offsetTopAndLeft*imageDimension; c>0; c--)
+    for (int c=offsetTopAndLeft*imageDimension; c>0; c--)
         *(ptrData++) = transp;
     
-    for(int my=0; my<matrixDimension; my++) {
+    for (int my=0; my<matrixDimension; my++) {
         uint32_t *ptrDataSouce = ptrData; // start of the row we will copy
         // left offset
-        for(int c=offsetTopAndLeft; c>0; c--) 
+        for (int c=offsetTopAndLeft; c>0; c--) 
             *(ptrData++) = transp;
         
-        for(int mx=0; mx<matrixDimension; mx++) {
+        for (int mx=0; mx<matrixDimension; mx++) {
             uint32_t clr = [matrix valueAt:mx y:my] ? black : white;
             // draw one pixel line of data
-            for(int c=pixelPerDot; c>0; c--) 
+            for (int c=pixelPerDot; c>0; c--) 
                 *(ptrData++) = clr;
         }
         
         // right offset
-        for(int c=offsetBottomAndRight; c>0; c--) 
+        for (int c=offsetBottomAndRight; c>0; c--) 
             *(ptrData++) = transp;
         
         // then copy that row pixelPerDot-1 times
-        for(int c=(pixelPerDot-1)*imageDimension; c>0; c--) 
+        for (int c=(pixelPerDot-1)*imageDimension; c>0; c--) 
             *(ptrData++) = *(ptrDataSouce++);
     }
     
     // bottom offset
-    for(int c=offsetBottomAndRight*imageDimension; c>0; c--) 
+    for (int c=offsetBottomAndRight*imageDimension; c>0; c--) 
         *(ptrData++) = transp;
     
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, 

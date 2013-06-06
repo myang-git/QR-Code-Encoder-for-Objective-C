@@ -1,6 +1,40 @@
 // QR_Encode.h : CQR_Encode クラス宣言およびインターフェイス定義
 // Date 2006/05/17	Ver. 1.22	Psytec Inc.
 
+// To compile as Objective-C++
+//
+//    #import "QR_Encode.h" // in Objective-C++ code (.mm)
+//
+//    Compile and link
+//      QR_Encode.mm
+//         QR_Encode.cpp
+//             QR_Encode.c
+//
+//
+// To compile as Objective-C
+//
+//    #import "QR_Encode.h" // in Objective-C code (.m)
+//
+//    Compile and link
+//      QR_Encode.m
+//         QR_Encode.c
+//
+//
+// To compile as C
+//
+//    #include "QR_Encode.h" // in C code (.c)
+//
+//    Compile and link
+//      QR_Encode.c
+//
+//
+// To compile as C++
+//
+//    #include "QR_Encode.h" // in C++ code (.cxx or .cpp)
+//
+//    Compile and link
+//      QR_Encode.cpp
+//        QR_Encode.c
 
 #ifndef _QR_ENCODE_H
 #define _QR_ENCODE_H
@@ -67,85 +101,76 @@ typedef struct tagQR_VERSIONINFO
 
 } QR_VERSIONINFO, *LPQR_VERSIONINFO;
 
+#ifndef YES
+typedef signed char    BOOL;
+#define YES            (BOOL)1
+#define NO             (BOOL)0
+#endif
 typedef unsigned short WORD;
+typedef unsigned char  BYTE;
+typedef BYTE*          LPBYTE;
+typedef char const*    LPCSTR;
 
-typedef unsigned char BYTE;
+typedef BYTE           ModuleData[MAX_MODULESIZE][MAX_MODULESIZE];
 
-typedef BYTE* LPBYTE;
-
-typedef const char* LPCSTR;
-
-#define ZeroMemory(Destination,Length) memset((Destination),0,(Length))
-
-
-class CQR_Encode
+typedef struct tagCQR_Encode_Struct
 {
-// 構築/消滅
-public:
-	CQR_Encode();
-	~CQR_Encode();
-
-public:
 	int m_nLevel;		// 誤り訂正レベル
 	int m_nVersion;		// バージョン(型番)
-	bool m_bAutoExtent;	// バージョン(型番)自動拡張指定フラグ
+	BOOL m_bAutoExtent;	// バージョン(型番)自動拡張指定フラグ
 	int m_nMaskingNo;	// マスキングパターン番号
 
-public:
 	int m_nSymbleSize;
-	BYTE m_byModuleData[MAX_MODULESIZE][MAX_MODULESIZE]; // [x][y]
+	ModuleData m_byModuleData; // [x][y]
 	// bit5:機能モジュール（マスキング対象外）フラグ
 	// bit4:機能モジュール描画データ
 	// bit1:エンコードデータ
 	// bit0:マスク後エンコード描画データ
 	// 20hとの論理和により機能モジュール判定、11hとの論理和により描画（最終的にはbool値化）
 
-private:
-	int m_ncDataCodeWordBit; // データコードワードビット長
-	BYTE m_byDataCodeWord[MAX_DATACODEWORD]; // 入力データエンコードエリア
-
-	int m_ncDataBlock;
-	BYTE m_byBlockMode[MAX_DATACODEWORD];
-	int m_nBlockLength[MAX_DATACODEWORD];
-
-	int m_ncAllCodeWord; // 総コードワード数(ＲＳ誤り訂正データを含む)
-	BYTE m_byAllCodeWord[MAX_ALLCODEWORD]; // 総コードワード算出エリア
-	BYTE m_byRSWork[MAX_CODEBLOCK]; // ＲＳコードワード算出ワーク
+    void *privateData;
 
 // データエンコード関連ファンクション
+//public:
+} CQR_Encode_Struct;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+CQR_Encode_Struct *CQR_Encode_Init       (void);
+void               CQR_Encode_Free       (CQR_Encode_Struct *data);
+BOOL               CQR_Encode_EncodeDataSource (CQR_Encode_Struct *data, int nLevel, int nVersion, BOOL bAutoExtent, int nMaskingNo, LPCSTR lpsSource, int ncSource);
+
+#define CQR_Encode_EncodeData(data, nLevel, nVersion, bAutoExtent, nMaskingNo, lpsSource) (CQR_Encode_EncodeDataSource(data, nLevel, nVersion, bAutoExtent, nMaskingNo, lpsSource, 0))
+
+#ifdef __cplusplus
+}
+
+class CQR_Encode_Proxy {
 public:
-	bool EncodeData(int nLevel, int nVersion, bool bAutoExtent, int nMaskingNo, LPCSTR lpsSource, int ncSource = 0);
+    int  &m_nLevel;
+    int  &m_nVersion;
+    BOOL &m_bAutoExtent;
+    int  &m_nMaskingNo;
+    int  &m_nSymbleSize;
+    ModuleData &m_byModuleData;
 
-private:
-	int GetEncodeVersion(int nVersion, LPCSTR lpsSource, int ncLength);
-	bool EncodeSourceData(LPCSTR lpsSource, int ncLength, int nVerGroup);
+protected:
+    CQR_Encode_Proxy(CQR_Encode_Struct *);
+    ~CQR_Encode_Proxy();
 
-	int GetBitLength(BYTE nMode, int ncData, int nVerGroup);
-
-	int SetBitStream(int nIndex, WORD wData, int ncData);
-
-	bool IsNumeralData(unsigned char c);
-	bool IsAlphabetData(unsigned char c);
-	bool IsKanjiData(unsigned char c1, unsigned char c2);
-
-	BYTE AlphabetToBinaly(unsigned char c);
-	WORD KanjiToBinaly(WORD wc);
-
-	void GetRSCodeWord(LPBYTE lpbyRSWork, int ncDataCodeWord, int ncRSCodeWord);
-
-// モジュール配置関連ファンクション
-private:
-	void FormatModule();
-
-	void SetFunctionModule();
-	void SetFinderPattern(int x, int y);
-	void SetAlignmentPattern(int x, int y);
-	void SetVersionPattern();
-	void SetCodeWordPattern();
-	void SetMaskingPattern(int nPatternNo);
-	void SetFormatInfoPattern(int nPatternNo);
-	int CountPenalty();
+    CQR_Encode_Struct *data;
 };
+
+class CQR_Encode : CQR_Encode_Proxy {
+public:
+     CQR_Encode();
+    ~CQR_Encode();
+
+    BOOL EncodeData(int nLevel, int nVersion, BOOL bAutoExtent, int nMaskingNo, LPCSTR lpsSource, int ncSource = 0);
+};
+#endif
 
 /////////////////////////////////////////////////////////////////////////////
 
