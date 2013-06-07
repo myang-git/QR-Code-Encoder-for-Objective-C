@@ -703,13 +703,13 @@ typedef struct tagCQR_EncodePrivateData_Struct {
 
 CQR_Encode_Struct* CQR_Encode_Init(void) {
     CQR_Encode_Struct *result = NULL;
-    void *data = malloc(COMBINED_DATA_SIZE);
-    if (NULL == data) { // handle malloc() failure
+    void *combined_data = malloc(COMBINED_DATA_SIZE);
+    if (NULL == combined_data) { // handle malloc() failure
         return NULL;
     }
-    memset(data, 0, COMBINED_DATA_SIZE);
-    result = (CQR_Encode_Struct *) &((char*)data)[sizeof(CQR_EncodePrivateData_Struct)];
-    result->privateData = (CQR_EncodePrivateData_Struct*)(data);
+    memset(combined_data, 0, COMBINED_DATA_SIZE);
+    result = (CQR_Encode_Struct *) &((char*)combined_data)[sizeof(CQR_EncodePrivateData_Struct)];
+    result->privateData = (CQR_EncodePrivateData_Struct*)(combined_data);
     return result;
 }
 
@@ -722,7 +722,7 @@ void CQR_Encode_Free(CQR_Encode_Struct *data) {
     if (NULL == data) {
         return;
     }
-    memset(data, 0, COMBINED_DATA_SIZE);
+    memset(data->privateData, 0, COMBINED_DATA_SIZE);
     free(data->privateData);
 }
 
