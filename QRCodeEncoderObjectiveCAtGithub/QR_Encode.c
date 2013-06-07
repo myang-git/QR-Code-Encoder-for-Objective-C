@@ -723,7 +723,7 @@ void CQR_Encode_Free(CQR_Encode_Struct *data) {
         return;
     }
     memset(data, 0, COMBINED_DATA_SIZE);
-    free(data);
+    free(data->privateData);
 }
 
 /////////////////////////////////////////////////////////////////////////////

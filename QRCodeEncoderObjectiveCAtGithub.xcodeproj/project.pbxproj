@@ -116,8 +116,8 @@
 		9672D34C13BD662F0002B0E2 = {
 			isa = PBXGroup;
 			children = (
-				9672D35C13BD662F0002B0E2 /* QRCodeEncoderObjectiveCAtGithub */,
 				9621844815431DBA00447877 /* QRCodeEncoderDemo */,
+				9672D35C13BD662F0002B0E2 /* QRCodeEncoderObjectiveCAtGithub */,
 				9672D35913BD662F0002B0E2 /* Frameworks */,
 				9672D35813BD662F0002B0E2 /* Products */,
 			);
