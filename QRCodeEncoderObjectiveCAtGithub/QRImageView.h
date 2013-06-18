@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataMatrix.h"
 
 @interface QRImageView : UIView
+
+@property (strong, nonatomic) DataMatrix *dataMatrix;
 
 @end
