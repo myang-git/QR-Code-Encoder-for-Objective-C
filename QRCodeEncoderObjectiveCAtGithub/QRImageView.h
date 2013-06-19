@@ -12,5 +12,6 @@
 @interface QRImageView : UIView
 
 @property (strong, nonatomic) DataMatrix *dataMatrix;
+@property (assign, nonatomic) unsigned int borderWidth;
 
 @end
