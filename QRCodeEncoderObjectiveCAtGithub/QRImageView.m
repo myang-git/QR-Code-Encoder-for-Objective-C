@@ -25,6 +25,11 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [self.backgroundColor CGColor]);
+    CGContextFillRect(context, rect);
+    
     if(self.dataMatrix == nil)
         return;
     
@@ -36,8 +41,6 @@
     CGFloat yOffset = 0.0;
     
     // Drawing code
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
     CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
     CGContextFillRect(context, CGRectMake(xMargin, yMargin, imageDimension, imageDimension));
     
