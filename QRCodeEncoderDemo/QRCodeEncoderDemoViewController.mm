@@ -16,6 +16,7 @@
 {
     [super viewDidLoad];
     
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     
     //the qrcode is square. now we make it 250 pixels wide
     int qrcodeImageDimension = 250;
@@ -32,17 +33,31 @@
     //put the image into the view
     UIImageView* qrcodeImageView = [[UIImageView alloc] initWithImage:qrcodeImage];
     CGRect parentFrame = self.view.frame;
-    CGRect tabBarFrame = self.tabBarController.tabBar.frame;
     
-    //center the image
-    CGFloat x = (parentFrame.size.width - qrcodeImageDimension) / 2.0;
-    CGFloat y = (parentFrame.size.height - qrcodeImageDimension - tabBarFrame.size.height) / 2.0;
-    CGRect qrcodeImageViewFrame = CGRectMake(x, y, qrcodeImageDimension, qrcodeImageDimension);
+    //put the image on a scroll view
+    CGFloat margin = (parentFrame.size.width - qrcodeImageDimension) / 2.0;
+    CGRect qrcodeImageViewFrame = CGRectMake(margin, margin, qrcodeImageDimension, qrcodeImageDimension);
     [qrcodeImageView setFrame:qrcodeImageViewFrame];
     
-    //and that's it!
-    [self.view addSubview:qrcodeImageView];
+    //you can also show the matrix using QRImageView
+    CGRect qrcodeImageViewFrame2 = CGRectMake(margin, margin * 2 + qrcodeImageDimension, qrcodeImageDimension, qrcodeImageDimension);
+    QRImageView* qrcodeImageView2 = [[QRImageView alloc] initWithFrame:qrcodeImageViewFrame2];
+    
+    //you can set the border arounding the QR code to make scanning easier, the default with is 4 dots
+    qrcodeImageView2.borderWidth = 4;
+    
+    //assign the matrix
+    qrcodeImageView2.dataMatrix = qrMatrix;
+    
+    //and that's it! The upper one is a bitmap image shown in UIImageView, the lower one is a QRImageView showing the same data matrix.
+    [scrollView addSubview:qrcodeImageView];
+    [scrollView addSubview:qrcodeImageView2];
+    [scrollView setContentSize:CGSizeMake(parentFrame.size.width, qrcodeImageDimension * 2 + margin * 3)];
+    [self.view addSubview:scrollView];
+    
     [qrcodeImageView release];
+    [qrcodeImageView2 release];
+    [scrollView release];
 }
 
 @end
