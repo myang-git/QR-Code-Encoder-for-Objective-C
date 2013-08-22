@@ -64,7 +64,7 @@ Take a look at QRCodeEncoderDemoViewController.mm for encoding and rendering exa
 Or build and run the target QRCodeEncoderDemo to see things in action.
 
 Also, since the encoder references C++ code, ALL implementation files need to have .mm as the extension.
-
+ 
 License
 =========================
 
