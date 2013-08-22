@@ -3,19 +3,51 @@ Install
 
 To integrate the QR Code Encoder static library with your iOS application, follow the steps below:
 
-    1. Drag the Xcode project package QRCodeEncoderObjectiveCAtGithub.xcodeproj to your project navigator
+1. Drag the Xcode project package QRCodeEncoderObjectiveCAtGithub.xcodeproj to your project navigator
 
-    2. Click on your project. Choose the target. Then go to the Build Phases page. 
-       Expand "Target Dependencies" and add qrencoder to the list
+2. Click on your project. Choose the target. Then go to the Build Phases page. 
+   Expand "Target Dependencies" and add qrencoder to the list
 
-    3. In the same Build Phases page, expand "Link Binary With Libraries", add libqrencoder.a to the list
+3. In the same Build Phases page, expand "Link Binary With Libraries", add libqrencoder.a to the list
+
+4. Switch to the Build Settings page, go down to the Search Paths section. (if you have trouble finding it, type "header search" in the search field)
+   Add the absolute path to the source code directory to the path list.
+   
+5. Add "CoreGraphics" framework to frameworks
+
+6. Build the project and you are good to go!
     
-    4. Switch to the Build Settings page, go down to the Search Paths section. (if you have trouble finding it, type "header search" in the search field)
-       Add the absolute path to the source code directory to the path list.
-       
-    5. Add "CoreGraphics" framework to frameworks
+Install the Cocoapod
+=========================
+An easier way to make the library available to your project is to use Cocoapods. Assuming you already have 
+Cocoapods installed, here is instruction:
     
-    6. Build the project and you are good to go!
+1. Open a terminal window, cd to your project's root directory
+2. Run the command:
+
+    ```
+    touch Podfile
+    ```
+    
+3. Open Podfile in a text editor, add the following line:
+
+    ```
+    platform :ios
+    pod 'QR-Code-Encoder-for-Objective-C'
+    ```
+    
+    save and close the file
+4. Run the command to install:
+
+    ```
+    pod install
+    ```
+    
+5. Run the command to open the project:
+
+    ```
+    open NAME_OF_YOUR_PROJECT.xcworkspace
+    ```
 
 How to Use
 =========================
