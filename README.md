@@ -20,7 +20,7 @@ To integrate the QR Code Encoder static library with your iOS application, follo
 Install the Cocoapod
 =========================
 An easier way to make the library available to your project is to use Cocoapods. Assuming you already have 
-Cocoapods installed, here is instruction:
+Cocoapods installed, here are the instructions:
     
 1. Open a terminal window, cd to your project's root directory
 2. Run the command:
@@ -29,7 +29,7 @@ Cocoapods installed, here is instruction:
     touch Podfile
     ```
     
-3. Open Podfile in a text editor, add the following line:
+3. Open Podfile in a text editor, add the following lines:
 
     ```
     platform :ios
